@@ -6,3 +6,15 @@ https://developers.google.com/fonts/docs/material_icons
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+
+2-2.TODO-CSS 스타일링 
+
+bootrap, font-awesome
+
+*css 초기화
+init.css
+reset.css
+initialize.css
+
+
+https://uigradients.com/#Aqualicious
