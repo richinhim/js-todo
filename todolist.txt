@@ -21,3 +21,6 @@ https://uigradients.com/#Aqualicious
 
 
 2-3.이벤트 다루기  
+
+2-4.배열 및 데이터 처리 
+

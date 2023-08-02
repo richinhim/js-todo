@@ -5,6 +5,10 @@ const inputText = document.querySelector(".input-text");
 //console.log(inputText);
 //console.log({ inputText });
 
+const addButton = document.querySelector(".add-button");
+
+const list = document.querySelector(".list");
+
 const likeButtons = document.querySelectorAll(".like");
 //console.log(likeButtons);
 
@@ -14,18 +18,16 @@ const likeButtons = document.querySelectorAll(".like");
   });
 }); */
 
-const addButton = document.querySelector(".add-button");
-
-const list = document.querySelector(".list");
-
 //addButton.addEventListener(행동, 함수);
 /**
  function(){}     :일반함수 
  ()=>{}           :arrow function 
  */
-addButton.addEventListener("click", function () {
+//const addItem = () => {};
+function addItem() {
   //console.log(inputText.value);
 
+  if (inputText.value.trim() === "") return;
   // like
   const like = document.createElement("span");
   const likeIcon = document.createElement("i");
@@ -54,8 +56,52 @@ addButton.addEventListener("click", function () {
 
   const li = document.createElement("li");
   //li.innerText = inputText.value;
+
+  // event
+  like.addEventListener("click", (e) => {
+    //console.log("hello");
+    console.log(e);
+    const target = e.target;
+
+    // 조건? 했을때 : 안했을때
+    const text =
+      target.innerText === "favorite" ? "favorite_border" : "favorite";
+    target.innerText = text;
+  });
+
+  // event
+  checkIcon.addEventListener("click", (e) => {
+    //const target = e.target;
+    const target = e.target.parentNode.parentNode; //li
+    console.log(target);
+    console.log(e);
+    target.classList.add("done");
+  });
+
+  // event
+  clearIcon.addEventListener("click", (e) => {
+    //const target = e.target;
+    const target = e.target.parentNode.parentNode; //li
+    console.log(target);
+    list.removeChild(target);
+    //console.log(target);
+  });
+
   li.appendChild(like);
   li.appendChild(item);
   li.appendChild(manage);
   list.appendChild(li);
+
+  inputText.value = "";
+  inputText.focus();
+}
+
+inputText.addEventListener("keypress", (e) => {
+  //console.log(e);
+  if (e.keyCode === 13) {
+    addItem();
+  }
 });
+
+//addButton.addEventListener("click", function () {});
+addButton.addEventListener("click", addItem);
